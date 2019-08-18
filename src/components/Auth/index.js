@@ -87,6 +87,9 @@ function Auth(props) {
         <FormStatus type={props.status.type} message={props.status.message} />
       )}
 
+      
+      <div id="firebaseui-auth-container"></div>
+
       <form
         onSubmit={e => {
           e.preventDefault();
@@ -158,6 +161,23 @@ function Auth(props) {
           </div>
         )}
       </form>
+      
+      <div className="field">
+          <p className="control ">
+            <SectionButton
+              parentColor={props.parentColor}
+              onClick={props.onSubmitGithub}
+              size="medium"
+              state={
+                props.status && props.status.type === "pending"
+                  ? "loading"
+                  : "normal"
+              }
+            >
+              Sign In With Github
+            </SectionButton>
+          </p>
+        </div>
     </div>
   );
 }

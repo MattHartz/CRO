@@ -10,6 +10,7 @@ import SigninPage from "./../signin";
 import SignupPage from "./../signup";
 import ForgotpassPage from "./../forgotpass";
 import ChangepassPage from "./../changepass";
+import ReposPage from "./../repos";
 import { Switch, Route, Router } from "./../../util/router.js";
 import Footer from "./../../components/Footer";
 import analytics from "./../../util/analytics.js";
@@ -39,6 +40,8 @@ function App(props) {
             <Route exact path="/contact" component={ContactPage} />
 
             <Route exact path="/dashboard" component={DashboardPage} />
+
+            <Route exact path="/repos" component={ReposPage} />
 
             <Route exact path="/signin" component={SigninPage} />
 

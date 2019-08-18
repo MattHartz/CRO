@@ -22,12 +22,44 @@ function SignIn(props) {
       });
   };
 
+  const onSubmitGithub = () => {
+    setStatus({ type: "pending" });
+    auth
+      .signinGithub()
+      .then(user => {
+        props.onSignin && props.onSignin(user);
+      })
+      .catch(error => {
+        setStatus({
+          type: "error",
+          message: error.message
+        });
+      });
+  };
+
+  const onSubmitGoogle = () => {
+    setStatus({ type: "pending" });
+    auth
+      .signinGoogle()
+      .then(user => {
+        props.onSignin && props.onSignin();
+      })
+      .catch(error => {
+        setStatus({
+          type: "error",
+          message: error.message
+        });
+      });
+  };
+
   return (
     <Auth
       mode="signin"
       buttonText={props.buttonText}
       parentColor={props.parentColor}
       onSubmit={onSubmit}
+      onSubmitGithub={onSubmitGithub}
+      onSubmitGoogle={onSubmitGoogle}
       status={status}
     />
   );

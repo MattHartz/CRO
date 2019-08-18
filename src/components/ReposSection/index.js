@@ -1,17 +1,9 @@
 import React from "react";
 import Section from "./../Section";
 import SectionHeader from "./../SectionHeader";
-import SignIn from "./../SignIn";
-import { useRouter } from "./../../util/router.js";
 import "./styles.scss";
 
-function SignInSection(props) {
-  const router = useRouter();
-
-  // Go to page after signin
-  const onSignin = (user) => {
-    router.push("/repos");
-  };
+function ReposSection(props) {
 
   return (
     <Section color={props.color} size={props.size}>
@@ -22,14 +14,16 @@ function SignInSection(props) {
           centered={true}
           size={3}
         />
-        <SignIn
-          buttonText={props.buttonText}
-          parentColor={props.color}
-          onSignin={onSignin}
-        />
+        <div>{props.user}</div>
+        <div>{props.idToken}</div>
+        <ol>
+          {props.repos.map(repo => (
+            <li key={repo.name}>{repo.name}</li>
+          ))}
+        </ol>
       </div>
     </Section>
   );
 }
 
-export default SignInSection;
+export default ReposSection;
